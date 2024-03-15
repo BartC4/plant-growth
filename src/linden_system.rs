@@ -1,6 +1,6 @@
 #[derive(Default)]
 
-pub struct LindenSystem {
+pub(crate) struct LindenSystem {
     sequence: String,
     rule_set: Vec<(char, String)>,
     angle: f32,
@@ -11,7 +11,7 @@ pub struct LindenSystem {
 
 #[allow(dead_code)]
 impl LindenSystem {
-    pub fn new() -> LindenSystem {
+    pub(crate) fn new() -> LindenSystem {
         let sequence = String::from("x");
         let rule_set = Vec::with_capacity(10);
         let angle = 45.0;
@@ -27,7 +27,7 @@ impl LindenSystem {
         }
     }
 
-    pub fn iterate(&mut self) {
+    pub(crate) fn iterate(&mut self) {
         let mut next = String::new();
         for c in self.sequence.chars() {
             match self.get_conversion(c) {
@@ -72,7 +72,7 @@ impl LindenSystem {
     fn get_sequence(&self) -> &String {
         &self.sequence
     }
-    fn get_rule_set(&self) -> &Vec<(char, String)> {
+    pub(crate) fn get_rule_set(&self) -> &Vec<(char, String)> {
         &self.rule_set
     }
     fn set_angle(&mut self, new_angle: f32) {
