@@ -10,7 +10,7 @@ jobs:
         id: get_build_steps
         shell: bash
         run: |
-          case ${{inputs.target-platform-short-name}} in
+          case "Windows" in
             "Windows")
               echo package_command="package-windows" >> "$GITHUB_OUTPUT"
               echo create_command="create-win-exe" >> "$GITHUB_OUTPUT"
